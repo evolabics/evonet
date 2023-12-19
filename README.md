@@ -198,3 +198,6 @@ Here is the maturation process as a graph:
 Finally, this graph shows the process of forwarding:
 ![forwarding](https://user-images.githubusercontent.com/17062093/28207991-4a36a71a-6894-11e7-9948-d63dc81c13c0.jpg)
 
+
+
+[![DOI](https://zenodo.org/badge/733507800.svg)](https://zenodo.org/doi/10.5281/zenodo.10406894)
