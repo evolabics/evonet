@@ -28,16 +28,15 @@ for (i in 1:length(mr_vec)){
             times_vec[vec_counter] <- fitness_simple_time
         }        
         vec_counter <- vec_counter + 1 
-        times_vec[vec_counter] <- evonet_time * 10 #10 genies frequency sta simulations tou evonet
+        times_vec[vec_counter] <- evonet_time * 10 #10 generations frequency at evonet simulations
         vec_counter <- vec_counter + 1
     }
 }
 
-#https://www.r-graph-gallery.com/265-grouped-boxplot-with-ggplot2/^B
-
-#dataframe 3 kolwnes prwti to mutation rate ka8e run
-#deuteri to apo pou proerxetai? evonet h fitnessSImple
-#triti to poso tou pire gia na ftasei to optimum
+#dataframe with 3 columns
+#1st column has mutation rate for each run
+#2nd is model type
+#3rd is how long until fitness optimum
 data <- data.frame(plot_mr_vec,plot_grn_vec,"times"=log(unlist(as.list(times_vec))))
 
 g1 <- ggplot(data, aes(x=plot_mr_vec, y=times, fill=plot_grn_vec)) + geom_boxplot()

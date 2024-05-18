@@ -51,7 +51,7 @@ read_data <- function(fdirName,curDir,n) {
           #if(fitness[nrow(fitness),1]<0.80){
           #    next
           #}
-          ##edw exeis to meso oro open genes per generation
+          ## mean of open genes per generation
       open_genes_mean<-rowMeans(open_genes)
       #final_open[,i]<-open_genes_mean
       #plot(open_genes_mean,type="p")
@@ -154,9 +154,9 @@ x <- differences<-c(1.000000,0.818731,0.753638,0.707222,0.670320,0.639407,0.6126
 
 output_data
 fit_data <- read_fitness(fdirName,curDir,n)
-fit_data[10,64] <- 500 # den 3erw giati alla to run 64 den brike kati, logika ekane megalo alma apo to ena sto allo difference
+fit_data[10,64] <- 500 # one run skipped the specific fitness level
 fit_data <- data.frame(fit_data)
-# mesos oros genias pou epiase auto to fitness level
+# generation average that reached the fitness level
 trans_fit_data <- melt(t(fit_data))
 rev_differences<-rev(c(1.000000,0.818731,0.753638,0.707222,0.670320,0.639407,0.612689,0.589105,0.567971,0.548812,0.531286))
 replace_columns <- rep(rev_differences, each=100)
@@ -179,12 +179,9 @@ plot_vec<-c(colMeans(output_data2))
 
 plot(seq(0, 1, 0.1),plot_vec,ylab="Mean open genes",xlab="Generation Fitness")
 '''
-#h logiki einai:
-# diavase to open_genes.txt kai to fitness.txt
-# enwse ta 2 txt giati panta 8a exoun to idio length logw oti anikoun sto idio run
-# katigoroiopoihse tis grammes twn combined data se bins analoga me to generation fitness
-# epanelabe tin diadikasia gia ola ta runs
-# bgale to colmean kai plottare to
-
-# to parataw gia twra giati prepei na doulepsw kai ligo gia ton ilia
-# h teleutaia idea einai na na exeis grouped barplot 2 koutia ana fitness level to ena na deixnei to fitness kai to allo na deixnei ta open genes
+# Pipelines goes as follows:
+# read to open_genes.txt and fitness.txt
+# concatenate the 2 txt cause they should have the same length since they belong to the same run
+# assign lines to fitness levels
+# repeat for all runs
+# extract colmean plot it
